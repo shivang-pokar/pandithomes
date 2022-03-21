@@ -15,6 +15,7 @@ jobs:
       - run: ng build services
       - run: ng build ui
       - run: npm link @ionic/cli
+      - run: npm install
       - run: ionic build --prod --project=userApp
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
