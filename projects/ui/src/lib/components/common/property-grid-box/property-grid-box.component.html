@@ -1,0 +1,15 @@
+<div class="grid-box" *ngIf="propertyData">
+    <a href="javascript:void(0)" routerLink="/buy/{{propertyData.id}}">
+        <img *ngIf="propertyData.attachments[0]" [src]="propertyData.attachments[0].url" alt="">
+    </a>
+    <div class="content-section p-3">
+        <h4>{{propertyData.title}}</h4>
+        <p>{{propertyData.description | slice:0:100}}...</p>
+        <p>{{propertyData.price | currency}}</p>
+        <div *ngIf="showEdit">
+            <ion-button fill="clear" shape="round" color="dark" (click)="edit()">
+                <ion-icon slot="start" name="create-outline"></ion-icon> Edit
+            </ion-button>
+        </div>
+    </div>
+</div>

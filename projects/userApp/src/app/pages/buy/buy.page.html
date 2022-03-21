@@ -1,0 +1,19 @@
+<ui-header></ui-header>
+
+<ion-content>
+  <ui-small-banner></ui-small-banner>
+
+
+  <div class="container mt-5">
+    <div class="row mt-5">
+      <ui-property-grid-box *ngFor="let property of property$ | async" [propertyData]="property"
+        class="col-12 mb-4 col-md-4" [showEdit]="false">
+      </ui-property-grid-box>
+    </div>
+    <div class="text-center mt-3 mb-5">
+      <ion-button class="warning-button" shape="round" size="medium" color="primary">Load More</ion-button>
+    </div>
+
+  </div>
+  <ui-footer></ui-footer>
+</ion-content>

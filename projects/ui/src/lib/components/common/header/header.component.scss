@@ -1,0 +1,23 @@
+ion-header {
+    background-color: var(--ion-black);
+}
+ul {
+    list-style: none;
+    li {
+        margin-left: 35px;
+        &:last-child {
+            margin-left: 10px;
+        }
+        &.ml-25 {
+            margin-left: 35px !important;
+        }
+    }
+    a {
+        color: var(--ion-white);
+        text-decoration: none;
+    }
+}
+ion-chip {
+    background: var(--ion-white);
+    color: var(--ion-black);
+}

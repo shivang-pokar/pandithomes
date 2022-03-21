@@ -1,0 +1,32 @@
+<ion-header>
+    <div class="container d-flex align-items-center justify-content-between pt-2 pb-2">
+        <a href="">
+            Logo
+        </a>
+        <ul class="d-flex p-3 m-0">
+            <li class="d-flex align-items-center"><a routerLink="/buy" href="javascript:void(0)">Buy</a></li>
+            <li class="d-flex align-items-center"><a routerLink="/sell" href="javascript:void(0)">Sell</a></li>
+            <li class="d-flex align-items-center"><a routerLink="/join-us">Join Us</a></li>
+            <ng-container *ngIf="!checkAccess()">
+                <li>
+                    <ion-button (click)="loginDialog()" fill="outline" shape="round" color="light">Login</ion-button>
+                </li>
+                <li>
+                    <ion-button (click)="signUp()" shape="round" color="light">Sign Up</ion-button>
+                </li>
+            </ng-container>
+
+            <li *ngIf="checkAccess()" class="ml-25">
+                <ion-chip color="light" class="m-0" [matMenuTriggerFor]="beforeMenu">
+                    <ion-label class="m-0">{{userData.fullName | slice:0:1}}</ion-label>
+                </ion-chip>
+                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                    <button (click)="logOut()" mat-menu-item class="d-flex align-items-center">
+                        <ion-icon style="font-size: 30px; margin-right: 10px;" name="log-out-outline"></ion-icon> Log
+                        Out
+                    </button>
+                </mat-menu>
+            </li>
+        </ul>
+    </div>
+</ion-header>

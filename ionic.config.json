@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "userApp": {
+      "name": "userApp",
+      "integrations": {
+        "cordova":{
+
+        }
+      },
+      "type": "angular",
+      "root": "projects/userApp"
+    }
+  }
+}

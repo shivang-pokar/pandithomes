@@ -1,0 +1,15 @@
+.grid-box {
+    box-shadow: 0 10px 20px 0 rgb(29 8 81 / 5%);
+    border-radius: 10px;
+    overflow: hidden;
+    img {
+        height: 15rem;
+        width: 100%;
+        object-fit: cover;
+        object-position: top center;
+        border: 1px solid var(--ion-border);
+    }
+    .content-section {
+        background: var(--ion-white);
+    }
+}

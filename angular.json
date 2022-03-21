@@ -3,5 +3,68 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "services": {
+      "projectType": "library",
+      "root": "projects/services",
+      "sourceRoot": "projects/services/src",
+      "prefix": "service",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/services/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/services/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/services/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/services/src/test.ts",
+            "tsConfig": "projects/services/tsconfig.spec.json",
+            "karmaConfig": "projects/services/karma.conf.js"
+          }
+        }
+      }
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "projects/ui",
+      "sourceRoot": "projects/ui/src",
+      "prefix": "ui",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ui/src/test.ts",
+            "tsConfig": "projects/ui/tsconfig.spec.json",
+            "karmaConfig": "projects/ui/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "services"
 }

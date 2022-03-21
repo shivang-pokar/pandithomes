@@ -1,0 +1,24 @@
+<div class="p-3">
+    <h1 class="text-center mb-4"><strong>Phone Number</strong></h1>
+    <div *ngIf="!verificationId">
+        <ion-input type="tel" [(ngModel)]="number">
+            <span>+91</span>
+        </ion-input>
+        <div class="text-center mt-2">
+            <ion-button class="warning-button w-50" (click)="mobileVerification()">Send Otp</ion-button>
+        </div>
+
+    </div>
+    <div *ngIf="verificationId">
+        <p class="mb-2 text-center">Enter the OTP sent on {{number}}</p>
+        <ion-input [(ngModel)]="otp" placeholder="Enter OTP" type="number"></ion-input>
+        <div class="text-center button-group mt-2">
+            <ion-button fill="outline" class="warning-button" (click)="resentOTP()">Resend Otp
+            </ion-button>
+            <ion-button class="warning-button" (click)="verifyOtp()">Verify Otp</ion-button>
+        </div>
+
+    </div>
+
+    <div id="sign-in-button"></div>
+</div>

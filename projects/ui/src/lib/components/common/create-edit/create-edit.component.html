@@ -1,0 +1,88 @@
+<h1 mat-dialog-title class="d-flex align-items-center justify-content-between">
+    Add your Property
+    <a href="javascript:void(0)" mat-dialog-close>
+        <ion-icon name="close-outline"></ion-icon>
+    </a>
+</h1>
+<div mat-dialog-content class="pb-5">
+    <form [formGroup]="propertyForm" (ngSubmit)="createUpdateProperty()">
+        <div class="attachments d-flex align-items-center justify-content-between p-3">
+            <p *ngIf="!imgSrc || !imgSrc.length" class="m-0">Attachments</p>
+            <div class="attachments-list d-flex" *ngIf="imgSrc && imgSrc.length">
+                <div *ngFor="let attach of imgSrc" class="image-section">
+                    <img [src]="attach.url" alt="">
+                </div>
+            </div>
+            <ion-button color="dark" fill="outline" shape="round" class="position-relative attachments-button">
+                <input type="file" class="position-absolute" (change)="changeUpload($event)" multiple>
+                <ion-icon slot="start" name="attach-outline"></ion-icon> Add Attach
+            </ion-button>
+        </div>
+        <div class="mt-3">
+            <ion-label>Address</ion-label>
+            <ion-input formControlName='title'></ion-input>
+        </div>
+        <div class="mt-3">
+            <ion-label>Description</ion-label>
+            <ion-textarea formControlName='description'></ion-textarea>
+        </div>
+        <div class="mt-3">
+            <ion-label>Google Location Link</ion-label>
+            <ion-input formControlName='googleLocationLink'></ion-input>
+        </div>
+
+        <ion-list class="mt-3">
+            <ion-radio-group value="house" formControlName='propertieType'>
+                <ion-list-header>
+                    <ion-label>Propertie Type</ion-label>
+                </ion-list-header>
+                <div class="d-flex align-items-center">
+                    <ion-item lines="none">
+                        <ion-label>House</ion-label>
+                        <ion-radio color="dark" slot="start" value="house"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                        <ion-label>Land</ion-label>
+                        <ion-radio color="dark" slot="start" value="land"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                        <ion-label>Commercial</ion-label>
+                        <ion-radio color="dark" slot="start" value="commercial"></ion-radio>
+                    </ion-item>
+                </div>
+
+            </ion-radio-group>
+        </ion-list>
+        <div class="mt-3 d-flex">
+            <div class="col-3 pr-2">
+                <ion-label>Price</ion-label>
+                <ion-input formControlName='price' type="number">
+                    <span>₹</span>
+                </ion-input>
+            </div>
+            <div class="col-3 pr-2" *ngIf="getPropertieType()">
+                <ion-label>Bedroom</ion-label>
+                <ion-input formControlName='bedroom' type="number"></ion-input>
+            </div>
+            <div class="col-3" *ngIf="getPropertieType()">
+                <ion-label>Bathroom</ion-label>
+                <ion-input formControlName='bathroom' type="number"></ion-input>
+            </div>
+            <div class="col-3 pl-2">
+                <ion-label>Land Size</ion-label>
+                <ion-input formControlName='landSize' type="text"></ion-input>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div mat-dialog-actions align="end">
+    <!-- <button mat-button>No Thanks</button>
+    <button mat-button cdkFocusInitial>Ok</button> -->
+    <ion-button color="danger" shape="round" class="warning-button">Delete</ion-button>
+    <ion-button (click)="createUpdateProperty()" *ngIf="!propertyForm.value.id" shape="round" class="warning-button">
+        Create</ion-button>
+    <ion-button (click)="createUpdateProperty()" *ngIf="propertyForm.value.id" shape="round" class="warning-button">
+        Update</ion-button>
+</div>
+<ui-loading *ngIf="isLoading"></ui-loading>

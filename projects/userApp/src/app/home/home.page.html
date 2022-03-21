@@ -1,0 +1,27 @@
+<ui-header></ui-header>
+
+<ion-content>
+  <ui-banner></ui-banner>
+
+  <div class="pt-5 pb-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2>Latest Properties</h2>
+        <p>Here are some of the standalone homes, house and land packages, townhouses and apartments in our current
+          collection. </p>
+      </div>
+
+
+      <div class="row">
+        <ui-property-grid-box *ngFor="let property of property$ | async" [propertyData]="property"
+          class="col-12 col-md-4" [showEdit]="false"></ui-property-grid-box>
+      </div>
+      <div class="text-center mt-5">
+        <a class="view-all" routerLink="/buy" href="javascript:void(0)">View All Properties</a>
+      </div>
+
+    </div>
+
+  </div>
+  <ui-footer></ui-footer>
+</ion-content>

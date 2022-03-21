@@ -1,0 +1,71 @@
+<ui-header></ui-header>
+
+<ion-content>
+  <owl-carousel *ngIf="propertyData"
+    [options]="{items: 1, dots: false, navigation: false,autoplay : true,autoplayTimeout: 3000,loop:true}"
+    [items]="imageObject" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+    <div class="item" *ngFor="let image of imageObject;let i = index">
+      <img [src]="image.url" alt="">
+    </div>
+  </owl-carousel>
+  <div class="container mt-5" *ngIf="propertyData">
+    <div class="row">
+      <div class="col-8">
+        <h3>Description</h3>
+        <p>{{propertyData.description}}</p>
+      </div>
+      <div class="col-4">
+        <p class="address d-flex align-items-center">
+          <ion-icon name="location"></ion-icon>
+          <span>{{propertyData.title}}</span>
+        </p>
+        <p class="price" *ngIf="propertyData.price">
+          Price <br>
+          <span>{{propertyData.price | currency}}</span>
+        </p>
+
+        <div class="d-flex house-info mb-3" *ngIf="propertyData.propertieType == 'house'">
+          <div class="d-flex align-items-center blog-section">
+            <ion-icon name="bed"></ion-icon>
+            {{propertyData.bedroom}}
+          </div>
+          <div class="d-flex align-items-center ion-icon">
+            <ion-icon src="assets/bathtub.svg"></ion-icon>
+            {{propertyData.bathroom}}
+          </div>
+        </div>
+
+
+
+        <div class="land_size w-50 mb-3">
+          <span>Land Size</span>
+          <label class="p-2">539sqm</label>
+        </div>
+
+        <div class="d-flex mb-3">
+          <div class="col-6 p-2">
+            <ion-button (click)="getEmailPhone()" class="w-100 m-0">Call</ion-button>
+          </div>
+          <div class="col-6 p-2">
+            <ion-button (click)="getEmailPhone()" class="w-100 m-0">Email</ion-button>
+          </div>
+        </div>
+
+        <div *ngIf="email && phone">
+          <div class="land_size w-100 mb-3 text-left">
+            <span>Email</span>
+            <a href="mailto:{{email}}" class="d-block p-2">{{email}}</a>
+          </div>
+          <div class="land_size w-100 mb-3 text-left">
+            <span>Phone</span>
+            <a class="p-2 d-block" href="tel:{{phone}}">{{phone}}</a>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  <ui-footer></ui-footer>
+</ion-content>
