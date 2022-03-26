@@ -79,7 +79,7 @@
 <div mat-dialog-actions align="end">
     <!-- <button mat-button>No Thanks</button>
     <button mat-button cdkFocusInitial>Ok</button> -->
-    <ion-button color="danger" shape="round" class="warning-button">Delete</ion-button>
+    <ion-button color="danger" shape="round" (click)="delete()" class="warning-button">Delete</ion-button>
     <ion-button (click)="createUpdateProperty()" *ngIf="!propertyForm.value.id" shape="round" class="warning-button">
         Create</ion-button>
     <ion-button (click)="createUpdateProperty()" *ngIf="propertyForm.value.id" shape="round" class="warning-button">

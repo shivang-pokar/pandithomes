@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../../share.module';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { OtpComponent } from './otp/otp.component';
+import { ForgotPassswordComponent } from './forgot-passsword/forgot-passsword.component';
 
 
 
@@ -11,7 +12,8 @@ import { OtpComponent } from './otp/otp.component';
   declarations: [
     LoginComponent,
     SignUpComponent,
-    OtpComponent
+    OtpComponent,
+    ForgotPassswordComponent
   ],
   imports: [
     CommonModule,

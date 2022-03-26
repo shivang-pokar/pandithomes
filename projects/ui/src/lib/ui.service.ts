@@ -5,6 +5,8 @@ import { OtpComponent } from '../lib/components/auth/otp/otp.component';
 import { LoginComponent } from '../lib/components/auth/login/login.component';
 import { CreateEditComponent } from '../lib/components/common/create-edit/create-edit.component';
 import { AlertDialogComponent } from '../lib/components/common/alert-dialog/alert-dialog.component';
+import { DeleteAlertComponent } from '../lib/components/common/delete-alert/delete-alert.component';
+import { ForgotPassswordComponent } from '../lib/components/auth/forgot-passsword/forgot-passsword.component';
 import { CookieService } from 'ngx-cookie-service';
 import { User, AlertService } from '@realestate/services';
 
@@ -53,6 +55,13 @@ export class UiService {
 
   }
 
+  deleteDiload() {
+    const dialogRef = this.dialog.open(DeleteAlertComponent, {
+      width: '550px',
+    });
+    return dialogRef;
+  }
+
   otp(userData: any) {
     const dialogRef = this.dialog.open(OtpComponent, {
       width: '550px',
@@ -82,6 +91,14 @@ export class UiService {
     this.cookieService.set('uid', uid);
     window.localStorage.setItem('user', JSON.stringify(userData));
     window.location.reload()
+  }
+
+  fargotPassword() {
+    const dialogRef = this.dialog.open(ForgotPassswordComponent, {
+      width: '550px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => { });
   }
 
 }

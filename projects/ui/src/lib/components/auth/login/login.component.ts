@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   signUp() {
@@ -75,5 +74,12 @@ export class LoginComponent implements OnInit {
     }
 
   }
+
+  fargotPassword() {
+    this.uiService.fargotPassword()
+  }
+
+
+
 
 }

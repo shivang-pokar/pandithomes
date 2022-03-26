@@ -15,6 +15,7 @@ export * from './lib/components/common/small-banner/small-banner.component';
 export * from './lib/components/common/create-edit/create-edit.component';
 export * from './lib/components/common/alert-dialog/alert-dialog.component';
 export * from './lib/components/common/loading/loading.component';
+export * from './lib/components/common/delete-alert/delete-alert.component';
 export * from './lib/components/common/common.module';
 
 

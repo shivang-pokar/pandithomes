@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlertService, AuthService, CrudServiceService } from '@realestate/services';
+import { UiService } from '../../../ui.service';
+
 
 @Component({
   selector: 'ui-create-edit',
@@ -24,6 +26,7 @@ export class CreateEditComponent implements OnInit {
     private alertService: AlertService,
     private crudServiceService: CrudServiceService,
     private angularFireAuth: AngularFireAuth,
+    private uiService: UiService,
   ) {
 
     this.propertyForm = this.formBuilder.group({
@@ -36,6 +39,7 @@ export class CreateEditComponent implements OnInit {
       googleLocationLink: ['', Validators.compose([Validators.required])],
       bedroom: [''],
       bathroom: [''],
+      deleteFlag: [''],
       landSize: ['', Validators.compose([Validators.required])],
     });
 
@@ -113,6 +117,7 @@ export class CreateEditComponent implements OnInit {
   async update() {
     this.isLoading = false;
     try {
+      console.log(this.propertyForm.value)
       const property = await this.crudServiceService.updateWithCollNamer(this.propertyCollName, this.propertyForm.value, this.propertyForm.value.id)
       this.alertService.success('Property details updated successfully')
     }
@@ -122,7 +127,19 @@ export class CreateEditComponent implements OnInit {
   }
 
   getPropertieType() {
-    return this.propertyForm.get('propertieType')?.value == 'house'
+    return this.propertyForm.get('propertieType')?.value == 'house';
+  }
+
+  delete() {
+    const model = this.uiService.deleteDiload();
+    model.afterClosed().subscribe(async res => {
+      if (res) {
+        this.propertyForm.get('deleteFlag')?.setValue('Y');
+        const property = await this.crudServiceService.delete(this.propertyCollName, this.propertyForm.value, this.propertyForm.value.id)
+        this.alertService.success('Property details updated successfully')
+        this.dialogRef.close();
+      }
+    })
   }
 
 }

@@ -22,7 +22,7 @@ export class AuthgardService implements CanActivate {
       if (authState && authState.uid == this.cookieService.get('uid') && authState.providerData.findIndex(provider => provider.providerId == 'phone') != -1) {
         return true;
       }
-      this.router.navigate(['']);
+      /* this.router.navigate(['']); */
       this.uiService.loginDialog();
       return false;
     }))

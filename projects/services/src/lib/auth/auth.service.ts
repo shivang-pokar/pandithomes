@@ -144,6 +144,10 @@ export class AuthService {
     return linkWithCredential(auth.currentUser, credential)
   }
 
+  resetPassword(email: string) {
+    return this.angularFireAuth.sendPasswordResetEmail(email);
+  }
+
   captch() {
     const auth = getAuth();
     return new RecaptchaVerifier('sign-in-button', {

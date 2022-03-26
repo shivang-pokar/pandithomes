@@ -11,6 +11,7 @@ import { SmallBannerComponent } from './small-banner/small-banner.component';
 import { CreateEditComponent } from './create-edit/create-edit.component';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import { LoadingComponent } from './loading/loading.component';
+import { DeleteAlertComponent } from './delete-alert/delete-alert.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoadingComponent } from './loading/loading.component';
     SmallBannerComponent,
     CreateEditComponent,
     AlertDialogComponent,
-    LoadingComponent
+    LoadingComponent,
+    DeleteAlertComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { LoadingComponent } from './loading/loading.component';
     SmallBannerComponent,
     CreateEditComponent,
     AlertDialogComponent,
-    LoadingComponent
+    LoadingComponent,
+    DeleteAlertComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

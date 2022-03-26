@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.property$ = this.crudServiceService.collection$(this.propertyCollName, qry => qry.limit(3))
+    this.property$ = this.crudServiceService.collection$(this.propertyCollName, qry => qry.orderBy('updatedAt', 'desc').where("deleteFlag", "==", "N").limit(3));
   }
 
 

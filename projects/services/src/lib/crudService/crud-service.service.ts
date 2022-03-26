@@ -37,6 +37,11 @@ export class CrudServiceService {
     return this.angularFirestore.collection<any>(collName).doc(id).set(obj, { merge: true });
   }
 
+  delete(collName: string, obj: any, id?: string) {
+    obj = JSON.parse(JSON.stringify(obj));
+    return this.angularFirestore.collection<any>(collName).doc(id).set(obj, { merge: true });
+  }
+
   collection$(path: string, query?: any) {
     (query: any) => query.orderBy('updatedAt', 'desc').where("deleteFlag", "==", "N");
     return this.angularFirestore.collection(path, query).valueChanges()
